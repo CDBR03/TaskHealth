@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f8f7">
+  <meta name="description" content="Protótipo responsivo para agendamento e gestão de consultas em clínicas e hospitais.">
+  <title>Clara Saúde — cuidado que cabe na sua rotina</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Link invisível até receber foco: permite pular navegação repetitiva com a tecla Tab. -->
+  <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
+  <!-- Cabeçalho fixo no fluxo da página; no celular a navegação é aberta pelo botão ☰. -->
+  <header class="shell topbar">
+    <a class="brand" href="#inicio" aria-label="Clara Saúde, início"><span class="brandmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span><span>clara saúde<small>CUIDADO PERTO DE VOCÊ</small></span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menu">☰</button>
+    <nav class="nav" id="mainNav" aria-label="Navegação principal"><a href="#especialidades">Especialidades</a><a href="portal.html">Área do paciente</a><a href="#consultar">Área do paciente</a><a class="nav-cta" href="portal.html">Entrar / agendar <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="conteudo">
+    <!-- Hero (primeira dobra): explica o serviço e leva às ações mais importantes. -->
+    <section class="shell hero" id="inicio">
+      <div><div class="eyebrow">Saúde com mais tranquilidade</div><h1>Seu cuidado começa com um bom encontro.</h1><p>Encontre profissionais, marque sua consulta e acompanhe seus próximos passos em um só lugar.</p><div class="actions"><a class="btn primary" href="portal.html">Agendar consulta <span aria-hidden="true">→</span></a><a class="btn secondary" href="#especialidades">Conhecer especialidades</a></div><p class="note">Protótipo demonstrativo. A confirmação do agendamento depende da equipe da clínica.</p><div class="trust"><span><b class="check">✓</b> Atendimento acolhedor</span><span><b class="check">✓</b> Seus dados com cuidado</span><span><b class="check">✓</b> Fácil no celular</span></div></div>
+      <div class="hero-art" role="img" aria-label="Ilustração original de uma profissional de saúde sorridente, ao lado de lembretes de consulta"><div class="art-card one"><div class="art-icon" aria-hidden="true">♡</div><div><strong>Cuidado com você</strong><span>No seu tempo, no seu ritmo</span></div></div><div class="person-illustration" aria-hidden="true"><div class="body"></div><div class="neck"></div><div class="face"></div><div class="hair"></div><div class="eye"></div><div class="smile"></div></div><div class="art-card two"><div class="art-icon" aria-hidden="true">▦</div><div><strong>Agende sem complicação</strong><span>Escolha um horário disponível</span></div></div></div>
+    </section>
+    <!-- Cartões de exemplo; adapte nomes e descrições às especialidades reais. -->
+    <section class="shell section" id="especialidades"><div class="section-head"><div><div class="eyebrow">Atendimento integrado</div><h2>Um lugar para cuidar de você</h2></div><p>Selecione uma área para iniciar seu pedido de consulta. A disponibilidade é confirmada pela equipe.</p></div><div class="services"><article class="service"><div class="service-icon" aria-hidden="true">✚</div><h3>Clínica geral</h3><p>Acompanhamento de rotina, prevenção e orientação para sua saúde.</p></article><article class="service"><div class="service-icon" aria-hidden="true">♡</div><h3>Cardiologia</h3><p>Avaliação e acompanhamento da saúde do coração com atenção individual.</p></article><article class="service"><div class="service-icon" aria-hidden="true">☼</div><h3>Pediatria</h3><p>Cuidado próximo para acompanhar cada fase do desenvolvimento.</p></article></div></section>
+    <!-- Chamada para entrar na área autenticada e agendar com horários publicados. -->
+    <section class="booking-wrap" id="agendar"><div class="shell booking"><div class="booking-copy"><div class="eyebrow">Vamos marcar?</div><h2>Escolha o cuidado que faz sentido para você.</h2><p>Preencha apenas o necessário para que a clínica entre em contato e organize seu atendimento. Não informe sintomas, diagnósticos ou outros dados de saúde neste formulário.</p><p class="smallline"><strong>Como funciona:</strong> envie seu pedido, aguarde a confirmação da equipe e receba os detalhes da consulta pelo canal informado.</p></div>
+      <div class="form-card"><h3>Agende pela sua área segura</h3><p class="sub">Crie sua conta ou entre para ver as datas disponíveis e acompanhar sua solicitação.</p><a class="btn primary" href="portal.html">Acessar área de pacientes →</a><p class="note">A equipe da clínica confirma os pedidos e publica horários por especialidade.</p></div>
+    </div></section>
+    <!-- A área abaixo lista somente registros de demonstração salvos neste navegador. -->
+    <section class="shell lookup" id="consultar"><div class="lookup-box"><div class="lookup-top"><div><div class="eyebrow">Portal de atendimento</div><h2>Pacientes e equipe, cada um com seu acesso</h2><p>Pacientes solicitam horários; a equipe organiza a disponibilidade e confirma consultas.</p></div><a class="btn primary" href="portal.html">Entrar no portal →</a></div></div></section>
+    <section class="shell"><div class="privacy-band"><div><h2>Seus dados merecem clareza e respeito.</h2><p>Usamos somente as informações necessárias para encaminhar seu pedido. Neste protótipo não há rastreadores de publicidade; cookies essenciais guardam apenas sua escolha de privacidade neste navegador.</p></div><button class="btn" data-legal="privacy">Como tratamos seus dados</button></div></section>
+  </main>
+  <footer class="shell footer"><div class="footer-inner"><div><a class="brand" href="#inicio"><span class="brandmark" aria-hidden="true">✚</span><span>clara saúde<small>CUIDADO PERTO DE VOCÊ</small></span></a><p>Protótipo de experiência digital. Clara Saúde é uma marca fictícia. Os textos legais são modelos informativos e precisam ser revisados e adaptados pela instituição antes de qualquer uso real.</p><p>© 2026 Clara Saúde. Ilustração criada em CSS para este protótipo; não utiliza fotografia de terceiros.</p></div><div class="footer-links"><button data-legal="privacy">Privacidade</button><button data-legal="terms">Termos de serviço</button><button data-legal="cookies">Cookies</button><button data-legal="refund">Reembolso</button><button data-legal="lgpd">Direitos LGPD</button><button data-legal="risks">Pontos para revisão</button></div></div></footer>
+  <!-- Aviso de cookies: o botão registra uma preferência local, sem carregar rastreadores. -->
+  <aside class="cookie" id="cookieBanner" aria-label="Aviso de cookies"><div><strong>Você escolhe como usar cookies</strong><p>Usamos armazenamento essencial para lembrar sua escolha. Não usamos scripts de tracking neste protótipo. <a href="#" data-legal="cookies">Saiba mais</a></p></div><div class="cookie-actions"><button id="cookieSettings">Preferências</button><button class="accept" id="cookieAccept">Entendi</button></div></aside>
+  <!-- Janela reutilizada para apresentar avisos e termos sem navegar para outra página. -->
+  <div class="modal-backdrop" id="modalBackdrop" role="presentation"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><div><div class="eyebrow">Clara Saúde</div><h2 id="modalTitle"></h2></div><button class="close" id="modalClose" aria-label="Fechar janela">×</button></div><div id="modalContent"></div></section></div><div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js" defer></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f8f7">
+  <title>Portal de atendimento — Clara Saúde</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="portal.css">
+  <script src="portal.js" defer></script>
+</head>
+<body>
+  <!-- Portal separado para login e gestão da agenda. O papel vem do servidor, nunca do formulário. -->
+  <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
+  <header class="shell topbar">
+    <a class="brand" href="index.html" aria-label="Clara Saúde, página inicial"><span class="brandmark" aria-hidden="true">✚</span><span>clara saúde<small>PORTAL DE ATENDIMENTO</small></span></a>
+    <a class="back-link" href="index.html">← Voltar ao site</a>
+  </header>
+  <main id="conteudo" class="shell portal-area">
+    <div class="portal-intro"><div class="eyebrow">Acesso com conta</div><h1>Vamos organizar seu cuidado.</h1><p>Pacientes acompanham seus pedidos. A equipe gerencia horários e confirma consultas.</p></div>
+    <div id="notice" class="portal-notice" role="status" aria-live="polite"></div>
+
+    <!-- Login e cadastro paciente. A criação pública nunca permite escolher o papel de equipe. -->
+    <section id="authPanel" class="portal-card auth-card" aria-labelledby="authTitle">
+      <div class="auth-tabs" role="tablist" aria-label="Escolha entrar ou criar conta">
+        <button class="auth-tab active" id="loginTab" type="button" role="tab" aria-selected="true" aria-controls="loginView">Entrar</button>
+        <button class="auth-tab" id="registerTab" type="button" role="tab" aria-selected="false" aria-controls="registerView">Criar conta de paciente</button>
+      </div>
+      <div id="loginView" role="tabpanel" aria-labelledby="loginTab">
+        <h2 id="authTitle">Acesse sua conta</h2><p class="muted">Pacientes e equipe usam o mesmo formulário de entrada.</p>
+        <form id="loginForm" class="portal-form">
+          <div class="field"><label for="loginEmail">E-mail</label><input id="loginEmail" name="email" type="email" autocomplete="username" required maxlength="180"></div>
+          <div class="field"><label for="loginPassword">Senha</label><input id="loginPassword" name="password" type="password" autocomplete="current-password" required maxlength="200"></div>
+          <button class="btn primary" type="submit">Entrar</button>
+        </form>
+        <p class="auth-tip">Ainda não tem conta? Use “Criar conta de paciente”. Contas da equipe são cadastradas pela instituição.</p>
+      </div>
+      <div id="registerView" role="tabpanel" aria-labelledby="registerTab" hidden>
+        <h2>Cadastro de paciente</h2><p class="muted">Coletamos apenas dados de contato necessários para a agenda.</p>
+        <form id="registerForm" class="portal-form">
+          <div class="field"><label for="registerName">Nome completo</label><input id="registerName" name="fullName" autocomplete="name" required maxlength="100"></div>
+          <div class="field"><label for="registerPhone">Telefone</label><input id="registerPhone" name="phone" type="tel" autocomplete="tel" required maxlength="24"></div>
+          <div class="field"><label for="registerEmail">E-mail</label><input id="registerEmail" name="email" type="email" autocomplete="email" required maxlength="180"></div>
+          <div class="field"><label for="registerPassword">Crie uma senha (mínimo de 10 caracteres)</label><input id="registerPassword" name="password" type="password" autocomplete="new-password" minlength="10" required maxlength="200"></div>
+          <label class="portal-consent"><input id="accountConsent" type="checkbox" required><span>Li o <a href="index.html?legal=privacy">Aviso de Privacidade</a> e aceito o uso dos meus dados de contato para gerenciar minha conta e meus pedidos de consulta.</span></label>
+          <button class="btn primary" type="submit">Criar conta</button>
+        </form>
+        <p class="auth-tip">Não inclua sintomas, diagnósticos, exames ou outras informações clínicas no cadastro.</p>
+      </div>
+    </section>
+
+    <!-- A área autenticada é preenchida pelo JavaScript depois que o servidor valida a sessão. -->
+    <section id="dashboard" hidden>
+      <div class="dashboard-heading"><div><div class="eyebrow" id="roleLabel">Sua área</div><h2 id="welcome"></h2><p class="muted" id="accountHint"></p></div><button id="logoutButton" class="btn secondary" type="button">Sair da conta</button></div>
+
+      <div id="patientArea" class="dashboard-grid" hidden>
+        <section class="portal-card"><div class="eyebrow">Paciente</div><h3>Solicitar uma consulta</h3><p class="muted">Escolha uma especialidade e um horário publicado pela equipe. Seu pedido fica pendente até a confirmação.</p>
+          <form id="appointmentForm" class="portal-form">
+            <div class="field"><label for="patientSpecialty">Especialidade</label><select id="patientSpecialty" required></select></div>
+            <div class="field"><label for="patientSlot">Data e horário disponíveis</label><select id="patientSlot" required><option value="">Selecione uma especialidade primeiro</option></select></div>
+            <button class="btn primary" type="submit">Solicitar horário</button>
+          </form>
+        </section>
+        <section class="portal-card"><div class="eyebrow">Acompanhe</div><h3>Minhas consultas</h3><div id="patientAppointments" class="appointment-list" aria-live="polite"></div></section>
+      </div>
+
+      <div id="staffArea" class="staff-grid" hidden>
+        <section class="portal-card"><div class="eyebrow">Equipe da clínica</div><h3>Publicar horário disponível</h3><p class="muted">O horário aparece para pacientes depois de ser publicado.</p>
+          <form id="slotForm" class="portal-form">
+            <div class="field"><label for="staffSpecialty">Especialidade</label><select id="staffSpecialty" required></select></div>
+            <div class="field"><label for="slotDate">Data e hora</label><input id="slotDate" type="datetime-local" required></div>
+            <div class="field"><label for="slotDuration">Duração em minutos</label><input id="slotDuration" type="number" min="10" max="240" step="5" value="30" required></div>
+            <button class="btn primary" type="submit">Publicar horário</button>
+          </form>
+        </section>
+        <section class="portal-card"><div class="eyebrow">Agenda</div><h3>Pedidos de consulta</h3><p class="muted">Confirme somente após validar a disponibilidade e os detalhes com o paciente.</p><div id="staffAppointments" class="appointment-list" aria-live="polite"></div></section>
+      </div>
+    </section>
+    <p class="demo-warning"><strong>Protótipo de demonstração:</strong> o banco fica em arquivo local e não deve receber dados reais de pacientes. Para uso clínico, hospede com segurança, configure HTTPS, revise controles e documentos com profissionais especializados.</p>
+  </main>
+  <footer class="shell footer portal-footer"><p>© 2026 Clara Saúde — marca fictícia para demonstração.</p></footer>
+</body>
+</html>
